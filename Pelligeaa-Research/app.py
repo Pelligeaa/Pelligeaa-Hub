@@ -54,8 +54,11 @@ try:
     df = load_stock_data(ticker, period, interval)
 
     if df.empty:
-        st.error("No data found for ticker.")
-        st.stop()
+    st.error(
+        f"No data found for ticker '{ticker}'. "
+        "Try symbols like AAPL, MSFT, TSLA, SPY, or NVDA."
+    )
+    st.stop()
 
     # Add Indicators
     if show_ma:
