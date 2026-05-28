@@ -22,27 +22,6 @@ Stock Market Visualizer is a Python-based Streamlit application for analyzing, t
 
 ---
 
-# Project Structure
-
-```text
-stock-market-visualizer/
-│
-├── app.py
-├── requirements.txt
-├── config/
-│   └── saved_configs.json
-├── data/
-├── utils/
-│   ├── indicators.py
-│   ├── portfolio.py
-│   ├── charts.py
-│   └── config_manager.py
-├── assets/
-└── README.md
-```
-
----
-
 # requirements.txt
 
 ```txt
