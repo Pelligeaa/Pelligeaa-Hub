@@ -27,11 +27,11 @@ from utils.config_manager import (
 # ---------------------------------------------------
 
 st.set_page_config(
-    page_title="Stock Market Visualizer",
+    page_title="Pelligeaa Stock Market Visualizer",
     layout="wide",
 )
 
-st.title("📈 Stock Market Visualizer")
+st.title("📈 Pelligeaa Stock Market Visualizer")
 
 # ---------------------------------------------------
 # SIDEBAR
