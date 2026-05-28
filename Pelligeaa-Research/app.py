@@ -47,8 +47,38 @@ chart_theme = st.sidebar.selectbox(
 # Download Data
 @st.cache_data
 
+@st.cache_data
 def load_stock_data(symbol, period, interval):
-    return yf.download(symbol, period=period, interval=interval)
+
+    try:
+        # Clean ticker input
+        symbol = symbol.strip().upper()
+
+        df = yf.download(
+            tickers=symbol,
+            period=period,
+            interval=interval,
+            auto_adjust=False,
+            progress=False,
+            threads=False,
+        )
+
+        # Handle empty response
+        if df is None or df.empty:
+            return pd.DataFrame()
+
+        # Flatten MultiIndex columns
+        if isinstance(df.columns, pd.MultiIndex):
+            df.columns = df.columns.get_level_values(0)
+
+        # Remove rows with missing close prices
+        df = df.dropna(subset=["Close"])
+
+        return df
+
+    except Exception as e:
+        st.error(f"Yahoo Finance Error: {e}")
+        return pd.DataFrame()
 
 try:
     df = load_stock_data(ticker, period, interval)
